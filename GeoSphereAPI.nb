@@ -1,0 +1,1068 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     47103,       1060]
+NotebookOptionsPosition[     43533,        989]
+NotebookOutlinePosition[     43933,       1005]
+CellTagsIndexPosition[     43890,       1002]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "GeoSphereAPIRequest", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"ClearAll", "[", "GeoSphereAPIMetadata", 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"ClearAll", "[", "constructQueryString", 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Needs", "[", "\"\<GeoSphereAPI`\>\"", "]"}]}], "Input",
+ CellChangeTimes->{{3.9117277741555443`*^9, 3.9117278571284914`*^9}, {
+  3.9117315642884674`*^9, 3.9117315660189943`*^9}, {3.9117332585589485`*^9, 
+  3.9117332678312016`*^9}, {3.911734261702987*^9, 3.9117342626764536`*^9}, {
+  3.9117509908689785`*^9, 3.911751000072111*^9}, {3.911995030289685*^9, 
+  3.9119950461078634`*^9}},
+ CellLabel->
+  "In[383]:=",ExpressionUUID->"813c5024-5477-4822-bf0c-b0f39443742b"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GeoSphereAPIRequest", "[", 
+  RowBox[{
+  "\"\<apolis_short-v1-1d-100m\>\"", ",", "2", ",", "3", ",", "4", ",", " ", 
+   RowBox[{"GeoSphereAPIResponseFormat", " ", "->", " ", "\"\<CSV\>\""}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.9117315680957365`*^9, 3.9117315871186857`*^9}, {
+  3.911733316930532*^9, 3.911733342500449*^9}, {3.9117340719253087`*^9, 
+  3.9117340748793693`*^9}, {3.91173413288148*^9, 3.9117341329973726`*^9}, {
+  3.9117344709154415`*^9, 3.9117344805753736`*^9}, {3.9117345795778556`*^9, 
+  3.9117346002132196`*^9}, {3.911734654658183*^9, 3.911734658592517*^9}, {
+  3.9117347526292377`*^9, 3.9117347749504385`*^9}, {3.91173485960189*^9, 
+  3.911734872649148*^9}, {3.911735441630108*^9, 3.9117354511378384`*^9}, {
+  3.911735588837963*^9, 3.9117355894982147`*^9}, {3.9117357196156445`*^9, 
+  3.9117357370718966`*^9}},
+ CellLabel->
+  "In[456]:=",ExpressionUUID->"36a58b9c-7ccb-45fb-b568-49a2e477ee22"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"timeseries\"\>"}], ",", 
+   RowBox[{"\<\"mode\"\>", "\[Rule]", "\<\"historical\"\>"}], ",", 
+   RowBox[{"\<\"response_formats\"\>", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\<\"geojson\"\>", ",", "\<\"csv\"\>"}], "}"}]}], ",", 
+   RowBox[{"\<\"url\"\>", 
+    "\[Rule]", \
+"\<\"https://dataset.api.hub.geosphere.at/v1/timeseries/historical/apolis_\
+short-v1-1d-100m\"\>"}]}], "}"}]], "Print",
+ CellChangeTimes->{{3.9117345969509954`*^9, 3.911734600963647*^9}, {
+   3.911734652763528*^9, 3.9117346595142884`*^9}, {3.911734747966628*^9, 
+   3.9117347754873724`*^9}, {3.9117348678205824`*^9, 3.9117348730982585`*^9}, 
+   3.911735419120474*^9, {3.9117354523769293`*^9, 3.9117354627888455`*^9}, 
+   3.911735540842377*^9, {3.9117355781770287`*^9, 3.9117355913862777`*^9}, {
+   3.911735715952229*^9, 3.911735738774457*^9}},
+ CellLabel->
+  "During evaluation of \
+In[456]:=",ExpressionUUID->"6948e4e5-3a05-4b05-aa62-db5ab1b7cb84"],
+
+Cell[BoxData["\<\"API base path: https://dataset.api.hub.zamg.ac.at\"\>"], \
+"Print",
+ CellChangeTimes->{{3.9117345969509954`*^9, 3.911734600963647*^9}, {
+   3.911734652763528*^9, 3.9117346595142884`*^9}, {3.911734747966628*^9, 
+   3.9117347754873724`*^9}, {3.9117348678205824`*^9, 3.9117348730982585`*^9}, 
+   3.911735419120474*^9, {3.9117354523769293`*^9, 3.9117354627888455`*^9}, 
+   3.911735540842377*^9, {3.9117355781770287`*^9, 3.9117355913862777`*^9}, {
+   3.911735715952229*^9, 3.9117357387914095`*^9}},
+ CellLabel->
+  "During evaluation of \
+In[456]:=",ExpressionUUID->"8f6735b3-2023-4346-a89e-cd537bc7ae6d"],
+
+Cell[BoxData["\<\"API version: v1\"\>"], "Print",
+ CellChangeTimes->{{3.9117345969509954`*^9, 3.911734600963647*^9}, {
+   3.911734652763528*^9, 3.9117346595142884`*^9}, {3.911734747966628*^9, 
+   3.9117347754873724`*^9}, {3.9117348678205824`*^9, 3.9117348730982585`*^9}, 
+   3.911735419120474*^9, {3.9117354523769293`*^9, 3.9117354627888455`*^9}, 
+   3.911735540842377*^9, {3.9117355781770287`*^9, 3.9117355913862777`*^9}, {
+   3.911735715952229*^9, 3.9117357388184586`*^9}},
+ CellLabel->
+  "During evaluation of \
+In[456]:=",ExpressionUUID->"91a349a1-521e-41d3-97a0-82f43b0d0363"],
+
+Cell[BoxData["\<\"GeoSphereAPIRequest will respond CSV.\"\>"], "Print",
+ CellChangeTimes->{{3.9117345969509954`*^9, 3.911734600963647*^9}, {
+   3.911734652763528*^9, 3.9117346595142884`*^9}, {3.911734747966628*^9, 
+   3.9117347754873724`*^9}, {3.9117348678205824`*^9, 3.9117348730982585`*^9}, 
+   3.911735419120474*^9, {3.9117354523769293`*^9, 3.9117354627888455`*^9}, 
+   3.911735540842377*^9, {3.9117355781770287`*^9, 3.9117355913862777`*^9}, {
+   3.911735715952229*^9, 3.9117357388324566`*^9}},
+ CellLabel->
+  "During evaluation of \
+In[456]:=",ExpressionUUID->"f99c42b7-2153-451d-ab9a-35fbadae7874"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GeoSphereAPIEndpoints", "[", "]"}]], "Input",
+ CellChangeTimes->{{3.911831490795134*^9, 3.9118315001379776`*^9}, {
+   3.911831662487423*^9, 3.911831707833627*^9}, 3.911831895448763*^9},
+ CellLabel->
+  "In[252]:=",ExpressionUUID->"354459ef-667e-4294-9ecc-514538bd4540"],
+
+Cell[BoxData[
+ RowBox[{"\[LeftAssociation]", 
+  RowBox[{
+   RowBox[{"\<\"apolis_short-v1-1d-100m\"\>", "\[Rule]", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"timeseries\"\>"}], ",", 
+      RowBox[{"\<\"mode\"\>", "\[Rule]", "\<\"historical\"\>"}], ",", 
+      RowBox[{"\<\"response_formats\"\>", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"\<\"geojson\"\>", ",", "\<\"csv\"\>"}], "}"}]}], ",", 
+      RowBox[{"\<\"url\"\>", 
+       "\[Rule]", \
+"\<\"https://dataset.api.hub.geosphere.at/v1/timeseries/historical/apolis_\
+short-v1-1d-100m\"\>"}]}], "\[RightAssociation]"}]}], ",", 
+   RowBox[{"\<\"histalp-v1-1y\"\>", "\[Rule]", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"station\"\>"}], ",", 
+      RowBox[{"\<\"mode\"\>", "\[Rule]", "\<\"historical\"\>"}], ",", 
+      RowBox[{"\<\"response_formats\"\>", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"\<\"geojson\"\>", ",", "\<\"csv\"\>"}], "}"}]}], ",", 
+      RowBox[{"\<\"url\"\>", 
+       "\[Rule]", \
+"\<\"https://dataset.api.hub.geosphere.at/v1/station/historical/histalp-v1-1y\
+\"\>"}]}], "\[RightAssociation]"}]}], ",", 
+   RowBox[{"\<\"inca-v1-1h-1km\"\>", "\[Rule]", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"timeseries\"\>"}], ",", 
+      RowBox[{"\<\"mode\"\>", "\[Rule]", "\<\"historical\"\>"}], ",", 
+      RowBox[{"\<\"response_formats\"\>", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"\<\"geojson\"\>", ",", "\<\"csv\"\>"}], "}"}]}], ",", 
+      RowBox[{"\<\"url\"\>", 
+       "\[Rule]", \
+"\<\"https://dataset.api.hub.geosphere.at/v1/timeseries/historical/inca-v1-1h-\
+1km\"\>"}]}], "\[RightAssociation]"}]}], ",", 
+   RowBox[{"\<\"nowcast-v1-15min-1km\"\>", "\[Rule]", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"timeseries\"\>"}], ",", 
+      RowBox[{"\<\"mode\"\>", "\[Rule]", "\<\"forecast\"\>"}], ",", 
+      RowBox[{"\<\"response_formats\"\>", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"\<\"geojson\"\>", ",", "\<\"csv\"\>"}], "}"}]}], ",", 
+      RowBox[{"\<\"url\"\>", 
+       "\[Rule]", \
+"\<\"https://dataset.api.hub.geosphere.at/v1/timeseries/forecast/nowcast-v1-\
+15min-1km\"\>"}]}], "\[RightAssociation]"}]}], ",", 
+   RowBox[{"\<\"nwp-v1-1h-2500m\"\>", "\[Rule]", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"timeseries\"\>"}], ",", 
+      RowBox[{"\<\"mode\"\>", "\[Rule]", "\<\"forecast\"\>"}], ",", 
+      RowBox[{"\<\"response_formats\"\>", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"\<\"geojson\"\>", ",", "\<\"csv\"\>"}], "}"}]}], ",", 
+      RowBox[{"\<\"url\"\>", 
+       "\[Rule]", \
+"\<\"https://dataset.api.hub.geosphere.at/v1/timeseries/forecast/nwp-v1-1h-\
+2500m\"\>"}]}], "\[RightAssociation]"}]}], ",", 
+   RowBox[{"\<\"snowgrid_cl-v2-1d-1km\"\>", "\[Rule]", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"timeseries\"\>"}], ",", 
+      RowBox[{"\<\"mode\"\>", "\[Rule]", "\<\"historical\"\>"}], ",", 
+      RowBox[{"\<\"response_formats\"\>", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"\<\"geojson\"\>", ",", "\<\"csv\"\>"}], "}"}]}], ",", 
+      RowBox[{"\<\"url\"\>", 
+       "\[Rule]", \
+"\<\"https://dataset.api.hub.geosphere.at/v1/timeseries/historical/snowgrid_\
+cl-v2-1d-1km\"\>"}]}], "\[RightAssociation]"}]}], ",", 
+   RowBox[{"\<\"spartacus-v1-1d-1km\"\>", "\[Rule]", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"timeseries\"\>"}], ",", 
+      RowBox[{"\<\"mode\"\>", "\[Rule]", "\<\"historical\"\>"}], ",", 
+      RowBox[{"\<\"response_formats\"\>", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"\<\"geojson\"\>", ",", "\<\"csv\"\>"}], "}"}]}], ",", 
+      RowBox[{"\<\"url\"\>", 
+       "\[Rule]", \
+"\<\"https://dataset.api.hub.geosphere.at/v1/timeseries/historical/spartacus-\
+v1-1d-1km\"\>"}]}], "\[RightAssociation]"}]}], ",", 
+   RowBox[{"\<\"spartacus-v2-1d-1km\"\>", "\[Rule]", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"timeseries\"\>"}], ",", 
+      RowBox[{"\<\"mode\"\>", "\[Rule]", "\<\"historical\"\>"}], ",", 
+      RowBox[{"\<\"response_formats\"\>", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"\<\"geojson\"\>", ",", "\<\"csv\"\>"}], "}"}]}], ",", 
+      RowBox[{"\<\"url\"\>", 
+       "\[Rule]", \
+"\<\"https://dataset.api.hub.geosphere.at/v1/timeseries/historical/spartacus-\
+v2-1d-1km\"\>"}]}], "\[RightAssociation]"}]}], ",", 
+   RowBox[{"\<\"spartacus-v1-1m-1km\"\>", "\[Rule]", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"timeseries\"\>"}], ",", 
+      RowBox[{"\<\"mode\"\>", "\[Rule]", "\<\"historical\"\>"}], ",", 
+      RowBox[{"\<\"response_formats\"\>", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"\<\"geojson\"\>", ",", "\<\"csv\"\>"}], "}"}]}], ",", 
+      RowBox[{"\<\"url\"\>", 
+       "\[Rule]", \
+"\<\"https://dataset.api.hub.geosphere.at/v1/timeseries/historical/spartacus-\
+v1-1m-1km\"\>"}]}], "\[RightAssociation]"}]}], ",", 
+   RowBox[{"\<\"spartacus-v2-1m-1km\"\>", "\[Rule]", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"timeseries\"\>"}], ",", 
+      RowBox[{"\<\"mode\"\>", "\[Rule]", "\<\"historical\"\>"}], ",", 
+      RowBox[{"\<\"response_formats\"\>", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"\<\"geojson\"\>", ",", "\<\"csv\"\>"}], "}"}]}], ",", 
+      RowBox[{"\<\"url\"\>", 
+       "\[Rule]", \
+"\<\"https://dataset.api.hub.geosphere.at/v1/timeseries/historical/spartacus-\
+v2-1m-1km\"\>"}]}], "\[RightAssociation]"}]}], ",", 
+   RowBox[{"\<\"spartacus-v2-1q-1km\"\>", "\[Rule]", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"timeseries\"\>"}], ",", 
+      RowBox[{"\<\"mode\"\>", "\[Rule]", "\<\"historical\"\>"}], ",", 
+      RowBox[{"\<\"response_formats\"\>", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"\<\"geojson\"\>", ",", "\<\"csv\"\>"}], "}"}]}], ",", 
+      RowBox[{"\<\"url\"\>", 
+       "\[Rule]", \
+"\<\"https://dataset.api.hub.geosphere.at/v1/timeseries/historical/spartacus-\
+v2-1q-1km\"\>"}]}], "\[RightAssociation]"}]}], ",", 
+   RowBox[{"\<\"spartacus-v2-1y-1km\"\>", "\[Rule]", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"timeseries\"\>"}], ",", 
+      RowBox[{"\<\"mode\"\>", "\[Rule]", "\<\"historical\"\>"}], ",", 
+      RowBox[{"\<\"response_formats\"\>", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"\<\"geojson\"\>", ",", "\<\"csv\"\>"}], "}"}]}], ",", 
+      RowBox[{"\<\"url\"\>", 
+       "\[Rule]", \
+"\<\"https://dataset.api.hub.geosphere.at/v1/timeseries/historical/spartacus-\
+v2-1y-1km\"\>"}]}], "\[RightAssociation]"}]}], ",", 
+   RowBox[{"\<\"winfore-v1-1d-1km\"\>", "\[Rule]", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"timeseries\"\>"}], ",", 
+      RowBox[{"\<\"mode\"\>", "\[Rule]", "\<\"historical\"\>"}], ",", 
+      RowBox[{"\<\"response_formats\"\>", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"\<\"geojson\"\>", ",", "\<\"csv\"\>"}], "}"}]}], ",", 
+      RowBox[{"\<\"url\"\>", 
+       "\[Rule]", \
+"\<\"https://dataset.api.hub.geosphere.at/v1/timeseries/historical/winfore-v1-\
+1d-1km\"\>"}]}], "\[RightAssociation]"}]}], ",", 
+   RowBox[{"\<\"winfore-v2-1d-1km\"\>", "\[Rule]", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"timeseries\"\>"}], ",", 
+      RowBox[{"\<\"mode\"\>", "\[Rule]", "\<\"historical\"\>"}], ",", 
+      RowBox[{"\<\"response_formats\"\>", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"\<\"geojson\"\>", ",", "\<\"csv\"\>"}], "}"}]}], ",", 
+      RowBox[{"\<\"url\"\>", 
+       "\[Rule]", \
+"\<\"https://dataset.api.hub.geosphere.at/v1/timeseries/historical/winfore-v2-\
+1d-1km\"\>"}]}], "\[RightAssociation]"}]}], ",", 
+   RowBox[{"\<\"klima-v1-1d\"\>", "\[Rule]", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"station\"\>"}], ",", 
+      RowBox[{"\<\"mode\"\>", "\[Rule]", "\<\"historical\"\>"}], ",", 
+      RowBox[{"\<\"response_formats\"\>", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"\<\"geojson\"\>", ",", "\<\"csv\"\>"}], "}"}]}], ",", 
+      RowBox[{"\<\"url\"\>", 
+       "\[Rule]", \
+"\<\"https://dataset.api.hub.geosphere.at/v1/station/historical/klima-v1-1d\"\
+\>"}]}], "\[RightAssociation]"}]}], ",", 
+   RowBox[{"\<\"klima-v1-1h\"\>", "\[Rule]", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"station\"\>"}], ",", 
+      RowBox[{"\<\"mode\"\>", "\[Rule]", "\<\"historical\"\>"}], ",", 
+      RowBox[{"\<\"response_formats\"\>", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"\<\"geojson\"\>", ",", "\<\"csv\"\>"}], "}"}]}], ",", 
+      RowBox[{"\<\"url\"\>", 
+       "\[Rule]", \
+"\<\"https://dataset.api.hub.geosphere.at/v1/station/historical/klima-v1-1h\"\
+\>"}]}], "\[RightAssociation]"}]}], ",", 
+   RowBox[{"\<\"klima-v1-1m\"\>", "\[Rule]", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"station\"\>"}], ",", 
+      RowBox[{"\<\"mode\"\>", "\[Rule]", "\<\"historical\"\>"}], ",", 
+      RowBox[{"\<\"response_formats\"\>", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"\<\"geojson\"\>", ",", "\<\"csv\"\>"}], "}"}]}], ",", 
+      RowBox[{"\<\"url\"\>", 
+       "\[Rule]", \
+"\<\"https://dataset.api.hub.geosphere.at/v1/station/historical/klima-v1-1m\"\
+\>"}]}], "\[RightAssociation]"}]}], ",", 
+   RowBox[{"\<\"klima-v1-10min\"\>", "\[Rule]", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"station\"\>"}], ",", 
+      RowBox[{"\<\"mode\"\>", "\[Rule]", "\<\"historical\"\>"}], ",", 
+      RowBox[{"\<\"response_formats\"\>", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"\<\"geojson\"\>", ",", "\<\"csv\"\>"}], "}"}]}], ",", 
+      RowBox[{"\<\"url\"\>", 
+       "\[Rule]", \
+"\<\"https://dataset.api.hub.geosphere.at/v1/station/historical/klima-v1-\
+10min\"\>"}]}], "\[RightAssociation]"}]}], ",", 
+   RowBox[{"\<\"tawes-v1-10min\"\>", "\[Rule]", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"station\"\>"}], ",", 
+      RowBox[{"\<\"mode\"\>", "\[Rule]", "\<\"current\"\>"}], ",", 
+      RowBox[{"\<\"response_formats\"\>", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"\<\"geojson\"\>", ",", "\<\"csv\"\>"}], "}"}]}], ",", 
+      RowBox[{"\<\"url\"\>", 
+       "\[Rule]", \
+"\<\"https://dataset.api.hub.geosphere.at/v1/station/current/tawes-v1-10min\"\
+\>"}]}], "\[RightAssociation]"}]}], ",", 
+   RowBox[{"\<\"synop-v1-1h\"\>", "\[Rule]", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"station\"\>"}], ",", 
+      RowBox[{"\<\"mode\"\>", "\[Rule]", "\<\"historical\"\>"}], ",", 
+      RowBox[{"\<\"response_formats\"\>", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"\<\"geojson\"\>", ",", "\<\"csv\"\>"}], "}"}]}], ",", 
+      RowBox[{"\<\"url\"\>", 
+       "\[Rule]", \
+"\<\"https://dataset.api.hub.geosphere.at/v1/station/historical/synop-v1-1h\"\
+\>"}]}], "\[RightAssociation]"}]}]}], "\[RightAssociation]"}]], "Output",
+ CellChangeTimes->{
+  3.9118315009467707`*^9, {3.9118316852126284`*^9, 3.911831708663118*^9}, 
+   3.911831896976761*^9},
+ CellLabel->
+  "Out[252]=",ExpressionUUID->"cb4af7fd-0afa-44ab-a3b4-b151e27dc321"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GeoSphereAPIResources", "[", "]"}]], "Input",
+ CellChangeTimes->{{3.9117276999588876`*^9, 3.9117277029564657`*^9}, {
+  3.91173548730291*^9, 3.911735492835032*^9}, {3.9117471619618187`*^9, 
+  3.9117471721080446`*^9}, {3.9117528686751404`*^9, 3.9117528732540407`*^9}},
+ CellLabel->
+  "In[300]:=",ExpressionUUID->"944eec68-c28b-4765-86da-278b3c792752"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"apolis_short-v1-1d-100m\"\>", ",", "\<\"histalp-v1-1y\"\>", 
+   ",", "\<\"inca-v1-1h-1km\"\>", ",", "\<\"nowcast-v1-15min-1km\"\>", 
+   ",", "\<\"nwp-v1-1h-2500m\"\>", ",", "\<\"snowgrid_cl-v2-1d-1km\"\>", 
+   ",", "\<\"spartacus-v1-1d-1km\"\>", ",", "\<\"spartacus-v2-1d-1km\"\>", 
+   ",", "\<\"spartacus-v1-1m-1km\"\>", ",", "\<\"spartacus-v2-1m-1km\"\>", 
+   ",", "\<\"spartacus-v2-1q-1km\"\>", ",", "\<\"spartacus-v2-1y-1km\"\>", 
+   ",", "\<\"winfore-v1-1d-1km\"\>", ",", "\<\"winfore-v2-1d-1km\"\>", 
+   ",", "\<\"klima-v1-1d\"\>", ",", "\<\"klima-v1-1h\"\>", 
+   ",", "\<\"klima-v1-1m\"\>", ",", "\<\"klima-v1-10min\"\>", 
+   ",", "\<\"tawes-v1-10min\"\>", ",", "\<\"synop-v1-1h\"\>"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{
+  3.9117277047136154`*^9, 3.9117278719275355`*^9, 3.9117307949432945`*^9, 
+   3.911734668184437*^9, 3.9117354939287305`*^9, 3.9117471733852243`*^9, {
+   3.911751567766039*^9, 3.9117515729317203`*^9}, {3.9117528621219096`*^9, 
+   3.911752873979998*^9}, 3.9118320446452694`*^9},
+ CellLabel->
+  "Out[300]=",ExpressionUUID->"7918b143-328d-4f21-9938-b07751ee29fe"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Association", "[", 
+   RowBox[{
+    RowBox[{"GeoSphereAPIEndpoints", "[", "]"}], "[", 
+    "\"\<inca-v1-1h-1km\>\"", "]"}], "]"}], "[", "\"\<url\>\"", 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.911749006008338*^9, 3.9117490111988106`*^9}, {
+  3.9117502144594398`*^9, 3.911750227835044*^9}, {3.9117512470940857`*^9, 
+  3.91175128775837*^9}},
+ CellLabel->
+  "In[566]:=",ExpressionUUID->"64b86915-b445-4bba-b5b0-3fa2e2154902"],
+
+Cell[BoxData["\<\"https://dataset.api.hub.geosphere.at/v1/timeseries/\
+historical/inca-v1-1h-1km\"\>"], "Output",
+ CellChangeTimes->{
+  3.9117490121562433`*^9, 3.9117502293762994`*^9, {3.911751241311985*^9, 
+   3.9117512886701107`*^9}},
+ CellLabel->
+  "Out[566]=",ExpressionUUID->"73a7a2e6-b1cf-4179-a332-c83f5798712d"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GeoSphereAPIMetadata", "[", "\"\<spartacus-v2-1m-1km\>\"", 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.911751125744625*^9, 3.9117511458166485`*^9}, {
+   3.911751434181497*^9, 3.9117514494085836`*^9}, 3.9117515817177715`*^9, {
+   3.9117519276909957`*^9, 3.9117519527365694`*^9}, 3.911752104486639*^9, {
+   3.9117521823901978`*^9, 3.9117522026143417`*^9}, {3.911752235153572*^9, 
+   3.9117522377226763`*^9}, {3.9118110894611*^9, 3.9118111322422843`*^9}, 
+   3.911831456433344*^9},
+ CellLabel->
+  "In[296]:=",ExpressionUUID->"39e2af56-eb01-4baf-9882-d3b0e291ed6d"],
+
+Cell[BoxData[
+ RowBox[{"\[LeftAssociation]", 
+  RowBox[{
+   RowBox[{"\<\"title\"\>", 
+    "\[Rule]", "\<\"SPARTACUS - Spatial Dataset for Climate in Austria\"\>"}],
+    ",", 
+   RowBox[{"\<\"parameters\"\>", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"\<\"name\"\>", "\[Rule]", "\<\"RR\"\>"}], ",", 
+        RowBox[{"\<\"long_name\"\>", 
+         "\[Rule]", "\<\"monthly precipitation sum\"\>"}], ",", 
+        RowBox[{"\<\"desc\"\>", 
+         "\[Rule]", "\<\"monthly sum (derived from daily sums measured by \
+climatological stations only between 07:00 CET of the respective day and \
+07:00 CET of the following day)\"\>"}], ",", 
+        RowBox[{"\<\"unit\"\>", "\[Rule]", "\<\"kg m-2\"\>"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"\<\"name\"\>", "\[Rule]", "\<\"SA\"\>"}], ",", 
+        RowBox[{"\<\"long_name\"\>", 
+         "\[Rule]", "\<\"monthly duration of sunshine\"\>"}], ",", 
+        RowBox[{"\<\"desc\"\>", 
+         "\[Rule]", "\<\"monthly mean (derived from daily minima and maxima \
+measured between 19:00 CET of the previous day and 19:00 CET of the \
+respective day)\"\>"}], ",", 
+        RowBox[{"\<\"unit\"\>", "\[Rule]", "\<\"s\"\>"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"\<\"name\"\>", "\[Rule]", "\<\"TM\"\>"}], ",", 
+        RowBox[{"\<\"long_name\"\>", 
+         "\[Rule]", "\<\"monthly mean of air temperature\"\>"}], ",", 
+        RowBox[{"\<\"desc\"\>", 
+         "\[Rule]", "\<\"monthly mean (derived from daily minima and maxima \
+measured between 19:00 CET of the previous day and 19:00 CET of the \
+respective day)\"\>"}], ",", 
+        RowBox[{"\<\"unit\"\>", "\[Rule]", "\<\"degree_Celsius\"\>"}]}], 
+       "}"}]}], "}"}]}], ",", 
+   RowBox[{"\<\"frequency\"\>", "\[Rule]", "\<\"1MS\"\>"}], ",", 
+   RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"timeseries\"\>"}], ",", 
+   RowBox[{"\<\"mode\"\>", "\[Rule]", "\<\"historical\"\>"}], ",", 
+   RowBox[{"\<\"response_formats\"\>", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\<\"geojson\"\>", ",", "\<\"csv\"\>"}], "}"}]}], ",", 
+   RowBox[{"\<\"start_time\"\>", 
+    "\[Rule]", "\<\"1961-01-01T00:00+00:00\"\>"}], ",", 
+   RowBox[{"\<\"end_time\"\>", "\[Rule]", "\<\"2023-12-01T00:00+00:00\"\>"}], 
+   ",", 
+   RowBox[{"\<\"bbox\"\>", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+     "46.16132856869247`", ",", "9.393909734939893`", ",", 
+      "49.177527691779716`", ",", "17.382180045432914`"}], "}"}]}], ",", 
+   RowBox[{"\<\"bbox_outer\"\>", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+     "46.15661379652522`", ",", "9.386722653137136`", ",", 
+      "49.18202316439183`", ",", "17.389375741207555`"}], "}"}]}], ",", 
+   RowBox[{"\<\"spatial_resolution_m\"\>", "\[Rule]", "1000"}], ",", 
+   RowBox[{"\<\"crs\"\>", "\[Rule]", "\<\"EPSG:3416\"\>"}], ",", 
+   RowBox[{"\<\"grid_bounds\"\>", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"258500.`", ",", "112500.`", ",", "586500.`", ",", "695500.`"}], 
+     "}"}]}]}], "\[RightAssociation]"}]], "Output",
+ CellChangeTimes->{
+  3.9117511467162404`*^9, 3.9117513716923776`*^9, {3.911751408485441*^9, 
+   3.911751450236082*^9}, 3.911751582842935*^9, 3.9117518476804295`*^9, {
+   3.9117519023367624`*^9, 3.911751953537295*^9}, 3.91175210514848*^9, {
+   3.9117521873300695`*^9, 3.911752203309785*^9}, 3.9117522388771524`*^9, {
+   3.911811094333833*^9, 3.9118111330762043`*^9}, 3.911831457767726*^9, {
+   3.911831931706778*^9, 3.9118319412126293`*^9}},
+ CellLabel->
+  "Out[296]=",ExpressionUUID->"38efe50f-8c73-45a1-b930-6ab55b39ea5b"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+   "GeoSphereAPIResourceParameters", "[", "\"\<inca-v1-1h-1km\>\"", "]"}], 
+   "[", 
+   RowBox[{"[", 
+    RowBox[{"All", ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"\"\<name\>\"", ",", " ", "\"\<long_name\>\""}], "}"}]}], "]"}],
+    "]"}], "//", "Values"}]], "Input",
+ CellChangeTimes->{{3.911752090746789*^9, 3.9117520957631617`*^9}, {
+  3.9117522844209137`*^9, 3.9117524163076887`*^9}, {3.9117525596730075`*^9, 
+  3.911752599249545*^9}, {3.9117526672231445`*^9, 3.9117526688625436`*^9}, {
+  3.911752778428538*^9, 3.911752836750991*^9}, {3.911752886232194*^9, 
+  3.911752887574464*^9}},
+ CellLabel->
+  "In[297]:=",ExpressionUUID->"2f167cfa-5988-4a9e-a095-aa47b75657fb"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"\<\"GL\"\>", ",", "\<\"global radiation\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"P0\"\>", ",", "\<\"mean sea level pressure\"\>"}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"RH2M\"\>", ",", "\<\"relative humidity\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"RR\"\>", ",", "\<\"1-hour precipitation sum\"\>"}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"T2M\"\>", ",", "\<\"air temperature\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"TD2M\"\>", ",", "\<\"dew point temperature\"\>"}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"UU\"\>", ",", "\<\"wind speed in eastward direction\"\>"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"VV\"\>", ",", "\<\"wind speed in northward direction\"\>"}], 
+    "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.9117520969550858`*^9, {3.9117522766606383`*^9, 3.9117523091126814`*^9}, {
+   3.9117523939655886`*^9, 3.911752413295399*^9}, 3.911752563293605*^9, {
+   3.911752594545625*^9, 3.911752600046932*^9}, {3.911752775815921*^9, 
+   3.9117528377253723`*^9}, 3.91175288866003*^9, 3.911831948341002*^9},
+ CellLabel->
+  "Out[297]=",ExpressionUUID->"287583ef-7c02-402a-851a-ed0546ecced5"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GeoSphereAPIResourceParameters", "[", "\"\<inca-v1-1h-1km\>\"", 
+  "]"}]], "Input",
+ CellLabel->
+  "In[298]:=",ExpressionUUID->"ac16b42d-b502-4110-8e4e-32e32d296aaf"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"name\"\>", "\[Rule]", "\<\"GL\"\>"}], ",", 
+     RowBox[{"\<\"long_name\"\>", "\[Rule]", "\<\"global radiation\"\>"}], 
+     ",", 
+     RowBox[{"\<\"desc\"\>", "\[Rule]", "\<\"global radiation\"\>"}], ",", 
+     RowBox[{"\<\"unit\"\>", "\[Rule]", "\<\"W m-2\"\>"}]}], 
+    "\[RightAssociation]"}], ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"name\"\>", "\[Rule]", "\<\"P0\"\>"}], ",", 
+     RowBox[{"\<\"long_name\"\>", 
+      "\[Rule]", "\<\"mean sea level pressure\"\>"}], ",", 
+     RowBox[{"\<\"desc\"\>", "\[Rule]", "\<\"mean sea level pressure\"\>"}], 
+     ",", 
+     RowBox[{"\<\"unit\"\>", "\[Rule]", "\<\"Pa\"\>"}]}], 
+    "\[RightAssociation]"}], ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"name\"\>", "\[Rule]", "\<\"RH2M\"\>"}], ",", 
+     RowBox[{"\<\"long_name\"\>", "\[Rule]", "\<\"relative humidity\"\>"}], 
+     ",", 
+     RowBox[{"\<\"desc\"\>", 
+      "\[Rule]", "\<\"relative humidity 2m above ground\"\>"}], ",", 
+     RowBox[{"\<\"unit\"\>", "\[Rule]", "\<\"percent\"\>"}]}], 
+    "\[RightAssociation]"}], ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"name\"\>", "\[Rule]", "\<\"RR\"\>"}], ",", 
+     RowBox[{"\<\"long_name\"\>", 
+      "\[Rule]", "\<\"1-hour precipitation sum\"\>"}], ",", 
+     RowBox[{"\<\"desc\"\>", "\[Rule]", "\<\"1-hour precipitation sum\"\>"}], 
+     ",", 
+     RowBox[{"\<\"unit\"\>", "\[Rule]", "\<\"kg m-2\"\>"}]}], 
+    "\[RightAssociation]"}], ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"name\"\>", "\[Rule]", "\<\"T2M\"\>"}], ",", 
+     RowBox[{"\<\"long_name\"\>", "\[Rule]", "\<\"air temperature\"\>"}], ",", 
+     RowBox[{"\<\"desc\"\>", 
+      "\[Rule]", "\<\"air temperature 2m above ground\"\>"}], ",", 
+     RowBox[{"\<\"unit\"\>", "\[Rule]", "\<\"degree_Celsius\"\>"}]}], 
+    "\[RightAssociation]"}], ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"name\"\>", "\[Rule]", "\<\"TD2M\"\>"}], ",", 
+     RowBox[{"\<\"long_name\"\>", 
+      "\[Rule]", "\<\"dew point temperature\"\>"}], ",", 
+     RowBox[{"\<\"desc\"\>", 
+      "\[Rule]", "\<\"dew point temperature 2m above ground\"\>"}], ",", 
+     RowBox[{"\<\"unit\"\>", "\[Rule]", "\<\"degree_Celsius\"\>"}]}], 
+    "\[RightAssociation]"}], ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"name\"\>", "\[Rule]", "\<\"UU\"\>"}], ",", 
+     RowBox[{"\<\"long_name\"\>", 
+      "\[Rule]", "\<\"wind speed in eastward direction\"\>"}], ",", 
+     RowBox[{"\<\"desc\"\>", 
+      "\[Rule]", "\<\"wind speed in eastward direction\"\>"}], ",", 
+     RowBox[{"\<\"unit\"\>", "\[Rule]", "\<\"m s-1\"\>"}]}], 
+    "\[RightAssociation]"}], ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"name\"\>", "\[Rule]", "\<\"VV\"\>"}], ",", 
+     RowBox[{"\<\"long_name\"\>", 
+      "\[Rule]", "\<\"wind speed in northward direction\"\>"}], ",", 
+     RowBox[{"\<\"desc\"\>", 
+      "\[Rule]", "\<\"wind speed in northward direction\"\>"}], ",", 
+     RowBox[{"\<\"unit\"\>", "\[Rule]", "\<\"m s-1\"\>"}]}], 
+    "\[RightAssociation]"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.911831008389096*^9, 3.911831951748868*^9},
+ CellLabel->
+  "Out[298]=",ExpressionUUID->"2d9b41ed-dc8d-45d9-a5b8-7f9d75a31303"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+  "GeoSphereAPIResourceParameters", "[", "\"\<spartacus-v2-1d-1km\>\"", "]"}],
+   "[", 
+  RowBox[{"[", 
+   RowBox[{"All", ",", " ", "\"\<name\>\""}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.9118310441042023`*^9, 3.9118311129356484`*^9}, {
+  3.9118311818053694`*^9, 3.911831213736931*^9}},
+ CellLabel->
+  "In[299]:=",ExpressionUUID->"6888e1fd-563a-4941-a852-9b3a94c76d6a"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"RR\"\>", ",", "\<\"SA\"\>", ",", "\<\"TN\"\>", 
+   ",", "\<\"TX\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.911831057132591*^9, {3.911831088579426*^9, 3.911831114286002*^9}, {
+   3.9118311911066475`*^9, 3.911831214940094*^9}, 3.9118319562446756`*^9},
+ CellLabel->
+  "Out[299]=",ExpressionUUID->"24948114-4c8f-43d7-8e75-fb78f6f0bec7"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GeoSphereAPIRequest", "[", 
+  RowBox[{"\"\<spartacus-v2-1d-1km\>\"", ",", 
+   RowBox[{"GeoPosition", "[", 
+    TemplateBox[<|"query" -> "Vienna", "boxes" -> TemplateBox[{"\"Vienna\"", 
+         RowBox[{"Entity", "[", 
+           RowBox[{"\"City\"", ",", 
+             RowBox[{"{", 
+               RowBox[{"\"Vienna\"", ",", "\"Vienna\"", ",", "\"Austria\""}], 
+               "}"}]}], "]"}], 
+         "\"Entity[\\\"City\\\", {\\\"Vienna\\\", \\\"Vienna\\\", \\\"Austria\
+\\\"}]\"", "\"city\""}, "Entity"], 
+      "allassumptions" -> {{
+        "type" -> "Clash", "word" -> "Vienna", "template" -> 
+         "Assuming \"Vienna\" is a city${separator}Use as ${desc} or ${desc} \
+instead", "count" -> "3", "pulldown" -> "false", "default" -> 
+         "{\"C\", \"Vienna\"} -> {\"City\", \"dflt\"}", 
+         "Values" -> {{
+           "name" -> "City", "desc" -> "a city", "input" -> 
+            "{\"C\", \"Vienna\"} -> {\"City\"}"}, {
+           "name" -> "AdministrativeDivision", "desc" -> 
+            "an administrative division", "input" -> 
+            "{\"C\", \"Vienna\"} -> {\"AdministrativeDivision\"}"}, {
+           "name" -> "GivenName", "desc" -> "a given name", "input" -> 
+            "{\"C\", \"Vienna\"} -> {\"GivenName\"}"}}}, {
+        "type" -> "SubCategory", "word" -> "Vienna", "template" -> 
+         "Assuming Vienna (Austria)${separator}Use ${desc} or ${pulldown} \
+instead", "count" -> "12", "pulldown" -> "true", "pulldownlabel" -> "more >>",
+          "pulldownlength" -> "10", "default" -> 
+         "{\"DPClash\", \"CityE\", \"Vienna\"} -> {{\"Vienna\", \"Vienna\", \
+\"Austria\"}, \"dflt\"}", 
+         "Values" -> {{
+           "name" -> "{Vienna, Vienna, Austria}", "desc" -> 
+            "Vienna (Austria)", "input" -> 
+            "{\"DPClash\", \"CityE\", \"Vienna\"} -> {{\"Vienna\", \
+\"Vienna\", \"Austria\"}}"}, {
+           "name" -> "{Vienna, Virginia, UnitedStates}", "desc" -> 
+            "Vienna (Virginia, USA)", "input" -> 
+            "{\"DPClash\", \"CityE\", \"Vienna\"} -> {{\"Vienna\", \"Virginia\
+\", \"UnitedStates\"}}"}, {
+           "name" -> "{Vienna, WestVirginia, UnitedStates}", "desc" -> 
+            "Vienna (West Virginia, USA)", "input" -> 
+            "{\"DPClash\", \"CityE\", \"Vienna\"} -> {{\"Vienna\", \
+\"WestVirginia\", \"UnitedStates\"}}"}, {
+           "name" -> "{Vienna, NewYork, UnitedStates}", "desc" -> 
+            "Vienna (New York, USA)", "input" -> 
+            "{\"DPClash\", \"CityE\", \"Vienna\"} -> {{\"Vienna\", \
+\"NewYork\", \"UnitedStates\"}}"}, {
+           "name" -> "{Vienna, Georgia, UnitedStates}", "desc" -> 
+            "Vienna (Georgia, USA)", "input" -> 
+            "{\"DPClash\", \"CityE\", \"Vienna\"} -> {{\"Vienna\", \
+\"Georgia\", \"UnitedStates\"}}"}, {
+           "name" -> "{Vienna, Wisconsin, UnitedStates}", "desc" -> 
+            "Vienna (Wisconsin, USA)", "input" -> 
+            "{\"DPClash\", \"CityE\", \"Vienna\"} -> {{\"Vienna\", \
+\"Wisconsin\", \"UnitedStates\"}}"}, {
+           "name" -> "{Vienna, Illinois, UnitedStates}", "desc" -> 
+            "Vienna (Illinois, USA)", "input" -> 
+            "{\"DPClash\", \"CityE\", \"Vienna\"} -> {{\"Vienna\", \"Illinois\
+\", \"UnitedStates\"}}"}, {
+           "name" -> "{Vienna, Maine, UnitedStates}", "desc" -> 
+            "Vienna (Maine, USA)", "input" -> 
+            "{\"DPClash\", \"CityE\", \"Vienna\"} -> {{\"Vienna\", \"Maine\", \
+\"UnitedStates\"}}"}, {
+           "name" -> "{Vienna, Missouri, UnitedStates}", "desc" -> 
+            "Vienna (Missouri, USA)", "input" -> 
+            "{\"DPClash\", \"CityE\", \"Vienna\"} -> {{\"Vienna\", \"Missouri\
+\", \"UnitedStates\"}}"}, {
+           "name" -> "{Vienna, Louisiana, UnitedStates}", "desc" -> 
+            "Vienna (Louisiana, USA)", "input" -> 
+            "{\"DPClash\", \"CityE\", \"Vienna\"} -> {{\"Vienna\", \
+\"Louisiana\", \"UnitedStates\"}}"}, {
+           "name" -> "{Vienna, Maryland, UnitedStates}", "desc" -> 
+            "Vienna (Maryland, USA)", "input" -> 
+            "{\"DPClash\", \"CityE\", \"Vienna\"} -> {{\"Vienna\", \"Maryland\
+\", \"UnitedStates\"}}"}, {
+           "name" -> "{Vienna, SouthDakota, UnitedStates}", "desc" -> 
+            "Vienna (South Dakota, USA)", "input" -> 
+            "{\"DPClash\", \"CityE\", \"Vienna\"} -> {{\"Vienna\", \
+\"SouthDakota\", \"UnitedStates\"}}"}}}}, "assumptions" -> {}, 
+      "open" -> {1, 2}, 
+      "querystate" -> {
+       "Online" -> True, "Allowed" -> True, "mparse.jsp" -> 
+        1.334249`7.576781879474392, "Messages" -> {}}, "contextinfo" -> 
+      Automatic, "version" -> 5|>,
+     "LinguisticAssistantTemplate"], "]"}], ",", 
+   RowBox[{"DateObject", "[", 
+    RowBox[{"{", 
+     RowBox[{"2023", ",", " ", "11", ",", "20"}], "}"}], "]"}], ",", 
+   RowBox[{"DateObject", "[", 
+    RowBox[{"{", 
+     RowBox[{"2023", ",", " ", "11", ",", " ", "30"}], "}"}], "]"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.911995641165723*^9, 3.911995693851844*^9}, {
+  3.911995941596266*^9, 3.911995969509478*^9}, {3.91199604119463*^9, 
+  3.9119960440516324`*^9}, {3.9119961295797806`*^9, 3.9119961344816513`*^9}},
+ CellLabel->
+  "In[573]:=",ExpressionUUID->"5644b928-ae99-474e-9c83-7d463098f44e"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"\<\"media_type\"\>", "\[Rule]", "\<\"application/json\"\>"}], ",", 
+   RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"FeatureCollection\"\>"}], ",", 
+   RowBox[{"\<\"version\"\>", "\[Rule]", "\<\"v1\"\>"}], ",", 
+   RowBox[{"\<\"timestamps\"\>", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"\<\"2023-11-20T00:00+00:00\"\>", 
+      ",", "\<\"2023-11-21T00:00+00:00\"\>", 
+      ",", "\<\"2023-11-22T00:00+00:00\"\>", 
+      ",", "\<\"2023-11-23T00:00+00:00\"\>", 
+      ",", "\<\"2023-11-24T00:00+00:00\"\>", 
+      ",", "\<\"2023-11-25T00:00+00:00\"\>", 
+      ",", "\<\"2023-11-26T00:00+00:00\"\>", 
+      ",", "\<\"2023-11-27T00:00+00:00\"\>", 
+      ",", "\<\"2023-11-28T00:00+00:00\"\>", 
+      ",", "\<\"2023-11-29T00:00+00:00\"\>", 
+      ",", "\<\"2023-11-30T00:00+00:00\"\>"}], "}"}]}], ",", 
+   RowBox[{"\<\"features\"\>", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"Feature\"\>"}], ",", 
+       RowBox[{"\<\"geometry\"\>", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"Point\"\>"}], ",", 
+          RowBox[{"\<\"coordinates\"\>", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"16.369626998901367`", ",", "48.22057342529297`"}], 
+            "}"}]}]}], "}"}]}], ",", 
+       RowBox[{"\<\"properties\"\>", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"\<\"parameters\"\>", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"\<\"RR\"\>", "\[Rule]", 
+             RowBox[{"{", 
+              RowBox[{
+               
+               RowBox[{"\<\"name\"\>", 
+                "\[Rule]", "\<\"daily precipitation sum\"\>"}], ",", 
+               RowBox[{"\<\"unit\"\>", "\[Rule]", "\<\"kg m-2\"\>"}], ",", 
+               RowBox[{"\<\"data\"\>", "\[Rule]", 
+                RowBox[{"{", 
+                 RowBox[{
+                 "0.`", ",", "0.1`", ",", "0.`", ",", "0.6`", ",", "4.`", ",",
+                   "2.5`", ",", "0.4`", ",", "0.8`", ",", "6.1`", ",", "0.`", 
+                  ",", "0.`"}], "}"}]}]}], "}"}]}], ",", 
+            RowBox[{"\<\"SA\"\>", "\[Rule]", 
+             RowBox[{"{", 
+              RowBox[{
+               
+               RowBox[{"\<\"name\"\>", 
+                "\[Rule]", "\<\"daily duration of sunshine\"\>"}], ",", 
+               RowBox[{"\<\"unit\"\>", "\[Rule]", "\<\"s\"\>"}], ",", 
+               RowBox[{"\<\"data\"\>", "\[Rule]", 
+                RowBox[{"{", 
+                 RowBox[{
+                 "13680.`", ",", "1800.`", ",", "720.`", ",", "24120.`", ",", 
+                  "1800.`", ",", "3960.`", ",", "17280.`", ",", "360.`", ",", 
+                  "0.`", ",", "17280.`", ",", "0.`"}], "}"}]}]}], "}"}]}], 
+            ",", 
+            RowBox[{"\<\"TN\"\>", "\[Rule]", 
+             RowBox[{"{", 
+              RowBox[{
+               
+               RowBox[{"\<\"name\"\>", 
+                "\[Rule]", "\<\"daily minimum of air temperature\"\>"}], ",", 
+               RowBox[{"\<\"unit\"\>", "\[Rule]", "\<\"degree_Celsius\"\>"}], 
+               ",", 
+               RowBox[{"\<\"data\"\>", "\[Rule]", 
+                RowBox[{"{", 
+                 RowBox[{
+                 "5.1`", ",", "7.5`", ",", "2.8`", ",", "2.`", ",", "4.4`", 
+                  ",", "1.1`", ",", "1.1`", ",", "2.3`", ",", "2.5`", ",", 
+                  RowBox[{"-", "0.9`"}], ",", 
+                  RowBox[{"-", "1.3`"}]}], "}"}]}]}], "}"}]}], ",", 
+            RowBox[{"\<\"TX\"\>", "\[Rule]", 
+             RowBox[{"{", 
+              RowBox[{
+               
+               RowBox[{"\<\"name\"\>", 
+                "\[Rule]", "\<\"daily maximum of air temperature\"\>"}], ",", 
+               RowBox[{"\<\"unit\"\>", "\[Rule]", "\<\"degree_Celsius\"\>"}], 
+               ",", 
+               RowBox[{"\<\"data\"\>", "\[Rule]", 
+                RowBox[{"{", 
+                 RowBox[{
+                 "14.6`", ",", "11.8`", ",", "9.2`", ",", "7.9`", ",", "9.1`",
+                   ",", "5.2`", ",", "4.5`", ",", "7.4`", ",", "6.5`", ",", 
+                  "3.7`", ",", "1.9`"}], "}"}]}]}], "}"}]}]}], "}"}]}], 
+         "}"}]}]}], "}"}], "}"}]}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.911995794756325*^9, 3.9119958328716955`*^9}, 
+   3.9119959301157084`*^9, {3.9119959628244867`*^9, 3.911995975769965*^9}, 
+   3.911996045464198*^9, 3.911996136249094*^9, 3.9119965469719534`*^9, 
+   3.9119965854551086`*^9},
+ CellLabel->
+  "Out[573]=",ExpressionUUID->"0a48977a-e1b2-4751-b0e0-90a3a374de39"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GeoPosition", "[", 
+  TemplateBox[<|
+   "query" -> "Zell am See", "boxes" -> TemplateBox[{"\"Zell am See\"", 
+       RowBox[{"Entity", "[", 
+         RowBox[{"\"City\"", ",", 
+           RowBox[{"{", 
+             
+             RowBox[{"\"ZellAmSee\"", ",", "\"Salzburg\"", ",", 
+               "\"Austria\""}], "}"}]}], "]"}], 
+       "\"Entity[\\\"City\\\", {\\\"ZellAmSee\\\", \\\"Salzburg\\\", \
+\\\"Austria\\\"}]\"", "\"city\""}, "Entity"], 
+    "allassumptions" -> {{
+      "type" -> "Clash", "word" -> "Zell am See", "template" -> 
+       "Assuming \"Zell am See\" is a city${separator}Use as ${desc} instead",
+        "count" -> "2", "pulldown" -> "false", "default" -> 
+       "{\"C\", \"Zell am See\"} -> {\"City\", \"dflt\"}", 
+       "Values" -> {{
+         "name" -> "City", "desc" -> "a city", "input" -> 
+          "{\"C\", \"Zell am See\"} -> {\"City\"}"}, {
+         "name" -> "AdministrativeDivision", "desc" -> 
+          "an administrative division", "input" -> 
+          "{\"C\", \"Zell am See\"} -> {\"AdministrativeDivision\"}"}}}}, 
+    "assumptions" -> {}, "open" -> {1, 2}, 
+    "querystate" -> {
+     "Online" -> True, "Allowed" -> True, "mparse.jsp" -> 
+      1.0759122`7.483321825596498, "Messages" -> {}}, "contextinfo" -> 
+    Automatic, "version" -> 5|>,
+   "LinguisticAssistantTemplate"], "]"}]], "Input",
+ CellChangeTimes->{{3.9118326222007837`*^9, 3.911832630875547*^9}, {
+  3.911832745269994*^9, 3.9118327732517633`*^9}, {3.9119964663647037`*^9, 
+  3.911996478676908*^9}},
+ CellLabel->
+  "In[527]:=",ExpressionUUID->"6873c3a6-94d2-46fa-a006-7f371702130c"],
+
+Cell[BoxData[
+ RowBox[{"GeoPosition", "[", 
+  RowBox[{"{", 
+   RowBox[{"47.32`", ",", "12.780000000000001`"}], "}"}], "]"}]], "Output",
+ CellChangeTimes->{3.91183278270776*^9, 3.911832910024091*^9, 
+  3.911832959542914*^9, 3.9119964864262495`*^9},
+ CellLabel->
+  "Out[527]=",ExpressionUUID->"750926d9-89a5-4ce1-9829-4cb417f4d8c1"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"%", "[", "\"\<LatitudeLongitude\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.9118327896300507`*^9, 3.911832792638282*^9}, {
+  3.9118329143875637`*^9, 3.911832917761535*^9}, {3.9118329633892508`*^9, 
+  3.9118329752705607`*^9}},
+ CellLabel->
+  "In[307]:=",ExpressionUUID->"759efb58-62a3-4df4-a829-62df40401cf8"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"48.22`", ",", "16.37`"}], "}"}]], "Output",
+ CellChangeTimes->{3.911832793264495*^9, 3.911832919904189*^9, 
+  3.9118329757415905`*^9},
+ CellLabel->
+  "Out[307]=",ExpressionUUID->"b4d474e3-39b2-4070-9fa6-bb0a811cac8e"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Normal", "@", "%"}]], "Input",
+ CellChangeTimes->{{3.9118329228072605`*^9, 3.9118329266153727`*^9}},
+ CellLabel->
+  "In[305]:=",ExpressionUUID->"1926a748-903d-42b9-a3f2-554edee4c3d0"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.8415977653116657`", ",", "0.2857103985514718`"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.9118329271198874`*^9},
+ CellLabel->
+  "Out[305]=",ExpressionUUID->"ab2df5bb-9219-4654-8f67-93d9b0b8c83e"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DateString", "[", 
+  RowBox[{
+   RowBox[{"DateObject", "[", "Now", "]"}], ",", "\"\<ISODate\>\""}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.91183369026414*^9, 3.9118337232480783`*^9}},
+ CellLabel->
+  "In[314]:=",ExpressionUUID->"678432ca-7204-4801-b756-eed12423a031"],
+
+Cell[BoxData["\<\"2023-12-17\"\>"], "Output",
+ CellChangeTimes->{{3.9118336958534985`*^9, 3.9118337240932612`*^9}},
+ CellLabel->
+  "Out[314]=",ExpressionUUID->"bc39d655-7094-4fc5-99af-f7c1abbf9f33"]
+}, Open  ]]
+},
+WindowSize->{638, 677},
+WindowMargins->{{Automatic, -5.5}, {Automatic, 1.5}},
+FrontEndVersion->"13.3 for Microsoft Windows (64-bit) (June 3, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"bb74ef7e-cb17-44ce-b8ff-831071b21074"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 737, 13, 64, "Input",ExpressionUUID->"813c5024-5477-4822-bf0c-b0f39443742b"],
+Cell[CellGroupData[{
+Cell[1320, 37, 943, 16, 21, "Input",ExpressionUUID->"36a58b9c-7ccb-45fb-b568-49a2e477ee22"],
+Cell[CellGroupData[{
+Cell[2288, 57, 1007, 20, 30, "Print",ExpressionUUID->"6948e4e5-3a05-4b05-aa62-db5ab1b7cb84"],
+Cell[3298, 79, 617, 10, 18, "Print",ExpressionUUID->"8f6735b3-2023-4346-a89e-cd537bc7ae6d"],
+Cell[3918, 91, 581, 9, 18, "Print",ExpressionUUID->"91a349a1-521e-41d3-97a0-82f43b0d0363"],
+Cell[4502, 102, 603, 9, 18, "Print",ExpressionUUID->"f99c42b7-2153-451d-ab9a-35fbadae7874"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5154, 117, 292, 5, 21, "Input",ExpressionUUID->"354459ef-667e-4294-9ecc-514538bd4540"],
+Cell[5449, 124, 11608, 247, 592, "Output",ExpressionUUID->"cb4af7fd-0afa-44ab-a3b4-b151e27dc321"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17094, 376, 373, 6, 21, "Input",ExpressionUUID->"944eec68-c28b-4765-86da-278b3c792752"],
+Cell[17470, 384, 1138, 19, 78, "Output",ExpressionUUID->"7918b143-328d-4f21-9938-b07751ee29fe"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18645, 408, 457, 11, 21, "Input",ExpressionUUID->"64b86915-b445-4bba-b5b0-3fa2e2154902"],
+Cell[19105, 421, 319, 6, 24, "Output",ExpressionUUID->"73a7a2e6-b1cf-4179-a332-c83f5798712d"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19461, 432, 583, 10, 21, "Input",ExpressionUUID->"39e2af56-eb01-4baf-9882-d3b0e291ed6d"],
+Cell[20047, 444, 3570, 74, 335, "Output",ExpressionUUID->"38efe50f-8c73-45a1-b930-6ab55b39ea5b"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[23654, 523, 718, 17, 21, "Input",ExpressionUUID->"2f167cfa-5988-4a9e-a095-aa47b75657fb"],
+Cell[24375, 542, 1260, 30, 64, "Output",ExpressionUUID->"287583ef-7c02-402a-851a-ed0546ecced5"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[25672, 577, 190, 4, 21, "Input",ExpressionUUID->"ac16b42d-b502-4110-8e4e-32e32d296aaf"],
+Cell[25865, 583, 3375, 75, 178, "Output",ExpressionUUID->"2d9b41ed-dc8d-45d9-a5b8-7f9d75a31303"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[29277, 663, 412, 10, 21, "Input",ExpressionUUID->"6888e1fd-563a-4941-a852-9b3a94c76d6a"],
+Cell[29692, 675, 383, 8, 35, "Output",ExpressionUUID->"24948114-4c8f-43d7-8e75-fb78f6f0bec7"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[30112, 688, 5216, 97, 52, "Input",ExpressionUUID->"5644b928-ae99-474e-9c83-7d463098f44e"],
+Cell[35331, 787, 4553, 99, 228, "Output",ExpressionUUID->"0a48977a-e1b2-4751-b0e0-90a3a374de39"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[39921, 891, 1616, 33, 31, "Input",ExpressionUUID->"6873c3a6-94d2-46fa-a006-7f371702130c"],
+Cell[41540, 926, 330, 7, 35, "Output",ExpressionUUID->"750926d9-89a5-4ce1-9829-4cb417f4d8c1"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[41907, 938, 333, 6, 21, "Input",ExpressionUUID->"759efb58-62a3-4df4-a829-62df40401cf8"],
+Cell[42243, 946, 257, 6, 35, "Output",ExpressionUUID->"b4d474e3-39b2-4070-9fa6-bb0a811cac8e"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[42537, 957, 207, 4, 21, "Input",ExpressionUUID->"1926a748-903d-42b9-a3f2-554edee4c3d0"],
+Cell[42747, 963, 239, 6, 35, "Output",ExpressionUUID->"ab2df5bb-9219-4654-8f67-93d9b0b8c83e"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[43023, 974, 293, 7, 21, "Input",ExpressionUUID->"678432ca-7204-4801-b756-eed12423a031"],
+Cell[43319, 983, 198, 3, 35, "Output",ExpressionUUID->"bc39d655-7094-4fc5-99af-f7c1abbf9f33"]
+}, Open  ]]
+}
+]
+*)
+
