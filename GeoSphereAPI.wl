@@ -23,7 +23,7 @@ Begin["`Private`"]
 (* set some necessary global variables *)
 $GeoSphereAPIBasePath = "https://dataset.api.hub.zamg.ac.at";
 $GeoSphereAPIVersion = "v1";
-$GeoSphereAPIResponseFormats = List["geojson", "csv"];
+$GeoSphereAPIResponseFormats = List["GeoJSON", "CSV"];
 $GeoSphereAPIDefaultResponseFormat = $GeoSphereAPIResponseFormats[[1]];
 
 (*Get an Association of API endpoints*)
@@ -32,7 +32,8 @@ GeoSphereAPIEndpoints[apiBasePath_:$GeoSphereAPIBasePath, apiVersion_:$GeoSphere
 		version = apiVersion, 
 		response, 
 		shortKeys},
-		response =Association[Import[URL[StringRiffle[List[basePath,version, "datasets"],"/" ]], "JSON"]];
+		response =Association[
+			Import[URL[StringRiffle[List[basePath,version, "datasets"],"/" ]], "JSON"]];
 		shortKeys =Map[Part[StringSplit[#,"/"],3]&, Keys[response]];
 		MapApply[Association,
 			KeyMap[Replace[MapApply[Rule,Transpose[List[Keys[response], shortKeys]]]]][response]]
@@ -80,20 +81,48 @@ constructQueryString[parameters_List,
 	]
 	
 	
-(* Main function to request data from the API *)
-Protect[GeoSphereAPIResponseFormat];	
-Options[GeoSphereAPIRequest]={GeoSphereAPIResponseFormat :> $GeoSphereAPIDefaultResponseFormat};			
+(* Main function to request data from the API *)		
 GeoSphereAPIRequest[resource_, 
 	position_GeoPosition, 
 	startDate_DateObject, 
 	endDate_DateObject, 
 	opts : OptionsPattern[]] := 
-		Module[{response},
-		response = 
-			Import[URL[StringJoin[
+		Module[{formatValue = $GeoSphereAPIDefaultResponseFormat,
+		rawResponse,
+		parameters,
+		timestamps,
+		response},
+		
+		(* get the raw API response in JSON format and turn it to an Association on the highest level *)
+		rawResponse = 
+			Association[Import[URL[StringJoin[
 						getResourceURL[resource], "?",
 						constructQueryString[GeoSphereAPIResourceParameters[resource][[All, "name"]],
-							startDate, endDate, position, OptionValue["GeoSphereAPIResponseFormat"]]]]]];
+							startDate, endDate, position, ToLowerCase[formatValue]]]],
+							{formatValue, "Data"}]];
+							
+		(* Use pattern matching to pick out the actual parameters and 
+		turn them into an associtation of associations *)
+		parameters = 
+			Map[Association, 
+				Apply[Association,
+					Flatten[Cases[rawResponse["Features"],
+						KeyValuePattern[key_->{"Name"->_String, "unit"->_String, "data"->_List}], Infinity]]]];
+			
+		(* Convert time stamps to DateObjects *)							
+		timestamps = List[Map[DateObject, rawResponse["timestamps"]]];	
+			
+		(* Finally, we want to replace the "data" entry with a timeseries of timestamps and data and return the result *)
+		response = MapAll[
+			Evaluate,
+			Replace[
+				parameters,
+					<|name_ -> n_, unit_ -> u_, data_ -> d_|> :> <|name -> n, unit -> u,
+						data -> TimeSeries[d, timestamps]|>,{1}]]
+						
+		];
+		
+		
 			
 
 End[]
