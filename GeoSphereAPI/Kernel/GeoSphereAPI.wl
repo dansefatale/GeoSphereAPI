@@ -21,7 +21,7 @@ GeoSphereAPIRequest::usage =
 Begin["`Private`"]
 
 (* set some necessary global variables *)
-$GeoSphereAPIBasePath = "https://dataset.api.hub.zamg.ac.at";
+$GeoSphereAPIBasePath = "https://dataset.api.hub.geosphere.at";
 $GeoSphereAPIVersion = "v1";
 $GeoSphereAPIResponseFormats = List["GeoJSON", "CSV"];
 $GeoSphereAPIDefaultResponseFormat = $GeoSphereAPIResponseFormats[[1]];
@@ -84,8 +84,7 @@ constructQueryString[parameters_List,
 GeoSphereAPIRequest[resource_, 
 	position_GeoPosition, 
 	startDate_DateObject, 
-	endDate_DateObject, 
-	opts : OptionsPattern[]] := 
+	endDate_DateObject] := 
 		Module[{formatValue = $GeoSphereAPIDefaultResponseFormat,
 		rawResponse,
 		parameters,
@@ -126,4 +125,7 @@ GeoSphereAPIRequest[resource_,
 
 End[]
 EndPackage[]
+
+
+
 
