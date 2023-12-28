@@ -46,6 +46,7 @@ GeoSphereAPIResources[]:=Keys[GeoSphereAPIEndpoints[]]
 getResourceURL[resource_]:=Module[{res = resource, endpoints}, 
 	endpoints = GeoSphereAPIEndpoints[];
 	If[MemberQ[Keys[endpoints], res], endpoints[res]["url"], List[]]]
+	
 (*  Get the metadata of a given resource *)
 GeoSphereAPIMetadata[resource_] := 
 	Module[{thisResource = resource,
