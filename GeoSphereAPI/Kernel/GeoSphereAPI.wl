@@ -18,6 +18,9 @@ GeoSphereAPIResourceParameters::usage =
 GeoSphereAPIRequest::usage = 
 	"Request data from the GeoSphere API"
 
+GeoSphereGetWeatherMap::usage =
+	"Request a weathermap from the GeoSphere website."
+
 Begin["`Private`"]
 
 (* set some necessary global variables *)
@@ -120,11 +123,49 @@ GeoSphereAPIRequest[resource_,
 						
 		];
 		
+	
+(* Function to request a weather map from the GeoSphere website *)
+GeoSphereGetWeatherMap[date_DateObject]:= 
+	Module[{requestHour,
+		requestDate,
+		basePath = "https://www.zamg.ac.at/fix/wetter/bodenkarte",
+		reqString,
+		sep = "/",
+		imgNamePrefix = "BK_BodAna_Sat_",
+		imgDate,
+		imgType = ".png"}, 
 		
+		(* From the given Date Object floor to the next possible request hour:
+		00:00, 06:00, 12:00, 18:00. If we do not find any Hour in the date object, set
+		it to midnight *)
+		requestHour = Quiet[Check[List[Floor[N[DateValue[date, "Hour"]/6]]*6, 0, 0],
+			List[0,0,0]]]; 
 			
+		requestDate = StringSplit[DateString[date, "ISODate"], "-"];
+		
+		(* https://www.zamg.ac.at/fix/wetter/bodenkarte/2024/01/13/BK_BodAna_Sat_2401130600.png *)
+		imgDate = StringJoin[
+			DateString[date, "YearShort"],
+			DateString[date,"Month"],
+			DateString[date, "Day"],
+			Map[ToString,
+				MapAt[If[# < 10, StringJoin["0", ToString[#]], ToString[#]]&,
+					requestHour, 1]]];
+		
+		reqString = 
+			StringRiffle[Flatten[List[
+				basePath,
+				requestDate,
+				StringJoin[imgNamePrefix,
+					imgDate,
+					imgType]]], sep];
+		
+		Import[reqString]
+	]		
 
 End[]
 EndPackage[]
+
 
 
 
