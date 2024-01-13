@@ -128,13 +128,21 @@ GeoSphereAPIRequest[resource_,
 GeoSphereGetWeatherMap[date_DateObject]:= 
 	Module[{requestHour,
 		requestDate,
+		currentDate,
 		basePath = "https://www.zamg.ac.at/fix/wetter/bodenkarte",
 		reqString,
 		sep = "/",
 		imgNamePrefix = "BK_BodAna_Sat_",
 		imgDate,
-		imgType = ".png"}, 
+		imgType = ".png",
+		map
+		}, 
 		
+		(* Throw an error if the date lies in the future*)
+		(*currentDate = Now;*)
+		(*Message[currentDate];*)
+		(*Assert[date > currentDate];*)
+		  
 		(* From the given Date Object floor to the next possible request hour:
 		00:00, 06:00, 12:00, 18:00. If we do not find any Hour in the date object, set
 		it to midnight *)
@@ -159,11 +167,29 @@ GeoSphereGetWeatherMap[date_DateObject]:=
 					imgDate,
 					imgType]]], sep];
 		
-		Import[reqString]
+		(* Check whether we are not trying to retrieve a date in the future.
+		If so, then abort the calculation and give some indication what went wrong.
+		However, there has to be a more elegant way to achieve this. *)
+		
+		On[Assert];
+		Assert[date <= Now];
+		Off[Assert];
+		If[date > Now, Abort[]];
+		
+		(* get the actual map *)
+		map = Import[reqString];
+		
+		(* If we do not retrieve an image the server is probably not updated yet
+		and we can retry to get the last available map *)
+		
+		If[Not[ImageQ[map]],
+			GeoSphereGetWeatherMap[date - Quantity[6, "Hours"]],
+			map]
 	]		
 
 End[]
 EndPackage[]
+
 
 
 
