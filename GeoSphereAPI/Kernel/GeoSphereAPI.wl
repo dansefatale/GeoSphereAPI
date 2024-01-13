@@ -143,7 +143,6 @@ GeoSphereGetWeatherMap[date_DateObject]:=
 			
 		requestDate = StringSplit[DateString[date, "ISODate"], "-"];
 		
-		(* https://www.zamg.ac.at/fix/wetter/bodenkarte/2024/01/13/BK_BodAna_Sat_2401130600.png *)
 		imgDate = StringJoin[
 			DateString[date, "YearShort"],
 			DateString[date,"Month"],
