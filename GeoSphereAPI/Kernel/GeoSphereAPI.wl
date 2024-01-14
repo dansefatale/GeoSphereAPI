@@ -185,12 +185,12 @@ GeoSphereGetWeatherMap[date_DateObject]:=
 		If[Not[ImageQ[map]],
 			GeoSphereGetWeatherMap[date - Quantity[6, "Hours"]],
 			map]
-	]		
+	]
+	
+GeoSphereGetWeatherMap[]:=GeoSphereGetWeatherMap[Now]		
 
 End[]
 EndPackage[]
-
-
 
 
 
