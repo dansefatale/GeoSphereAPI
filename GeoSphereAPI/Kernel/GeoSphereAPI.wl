@@ -145,12 +145,7 @@ GeoSphereGetWeatherMap[date_DateObject]:=
 		imgType = ".png",
 		map
 		}, 
-		
-		(* Throw an error if the date lies in the future*)
-		(*currentDate = Now;*)
-		(*Message[currentDate];*)
-		(*Assert[date > currentDate];*)
-		  
+	  
 		(* From the given Date Object floor to the next possible request hour:
 		00:00, 06:00, 12:00, 18:00. If we do not find any Hour in the date object, set
 		it to midnight *)
