@@ -60,6 +60,14 @@ GeoSphereAPIMetadata[resource_] :=
 GeoSphereAPIResourceParameters[resource_]:=
 	MapApply[Association, GeoSphereAPIMetadata[resource]["parameters"]]	
 
+(* construct the date/time string *)
+constructDateTimeString[date_DateObject] :=
+	StringRiffle[
+		MapAt[
+			StringRiffle[StringSplit[#, ":"][[1;;2]], "%3A"]&,
+			StringSplit[DateString[date, "ISODateTime"], "T"], 
+			2], "T"]
+
 (* Construct the main query *)
 constructQueryString[parameters_List, 
 	startDate_DateObject, 
@@ -67,8 +75,8 @@ constructQueryString[parameters_List,
 	position_GeoPosition, 
 	responseFormat_String]:=
 	Module[{pars = parameters,
-			start = DateString[startDate, "ISODate"],
-			end = DateString[endDate, "ISODate"],
+			start = constructDateTimeString[startDate],
+			end = constructDateTimeString[endDate],
 			latLong = position["LatitudeLongitude"],
 			format = StringJoin["output_format=",responseFormat],
 			parString,
@@ -191,6 +199,7 @@ GeoSphereGetWeatherMap[]:=GeoSphereGetWeatherMap[Now]
 
 End[]
 EndPackage[]
+
 
 
 
